@@ -19,12 +19,13 @@ ${TEST NAME}
 ${TEST STATUS}
 ${TEST TAGS}
 ${SELENIUM_DEVICE}
+${SELENIUM_BROWSER}
 
 
 *** Keywords ***
 #   BEGIN GENERIC KEYWORDS
 Open Test browser
-  [Documentation]  Open Browser ${BROWSER} to ${HOST} for testing ${SUITE_NAME}
+  [Documentation]  Sauce URL = '${SAUCE_URL}' __ Sauce Capabilities = '${SAUCE_CAPABILITIES}' __ Browser = '${BROWSER}' __ Selenium Device = '${SELENIUM_DEVICE}'
   Run Keyword If  '${SAUCE_URL}' != ''  Open Browser  ${HOST}
   ...  remote_url=${SAUCE_URL}
   ...  desired_capabilities=${SAUCE_CAPABILITIES}
@@ -49,7 +50,7 @@ Teardown Browser
   ...  Run Keyword And Continue On Failure  Report Sauce status
   ...  ${TEST NAME}  ${TEST STATUS}  ${TEST TAGS}  ${SAUCE_URL}
   Run Keyword If  '${APPLITOOLS_KEY}' != ''
-  ...  Run Keyword And Continue On Failure   Close Eyes Session
+  ...  Run Keyword And Continue On Failure  Close Eyes Session
   Close all browsers
 
 Take Screenshot of "${screenshot_name}" page

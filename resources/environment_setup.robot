@@ -23,6 +23,7 @@ ${HOST}=                https://www.google.tt
 
 ####  Setup global variables                                                ####
 Environment setup
+  Run Keyword If  '${SELENIUM_BROWSER}'==''  Set global variable  ${BROWSER}  firefox
   Run Keyword If  '${ENVIRONMENT}'=='dev'  develop
   Run Keyword If  '${ENVIRONMENT}'=='test'   test
   Run Keyword If  '${ENVIRONMENT}'=='stage'  stage
@@ -30,7 +31,7 @@ Environment setup
   Run Keyword If  '${ENVIRONMENT}'=='prod'   prod
   Create Directory  ${OUTPUT DIR}/screenshots/${SUITE_NAME}/
   Open test browser
-  Run Keyword If  '${APPLITOOLS_KEY}' != ''  Open Eyes Session
+  Run Keyword If  '${APPLITOOLS_KEY}'!=''  Open Eyes Session
   ...  url=${HOST}
   ...  appname=${APPLITOOLS_APP_NAME}
   ...  testname=${SUITE_NAME}
